@@ -1,0 +1,56 @@
+/*==============================
+	Overall styling 
+================================ */
+
+body {
+    padding: 20px 15%;
+  }
+  form header {
+    margin: 0 0 20px 0; 
+  }
+  form header div {
+    font-size: 90%;
+    color: #999;
+  }
+  form header h2 {
+    margin: 0 0 5px 0;
+  }
+  input {
+      display: block
+  }
+  
+  /*==============================
+      Table styling
+  ================================ */
+  .styled-table {
+      border-collapse: collapse;
+      margin: 25px 0;
+      font-size: 0.9em;
+      font-family: sans-serif;
+      min-width: 400px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+  .styled-table thead tr {
+      background-color: #1873bc;
+      color: #ffffff;
+      text-align: left;
+  }
+  .styled-table th,
+  .styled-table td {
+      padding: 12px 15px;
+  }
+  .styled-table tbody tr {
+      border-bottom: 1px solid #dddddd;
+  }
+  
+  .styled-table tbody tr:nth-of-type(even) {
+      background-color: #f3f3f3;
+  }
+  
+  .styled-table tbody tr:last-of-type {
+      border-bottom: 6px solid #1873bc;
+  }
+  .styled-table tbody tr.active-row {
+      font-weight: bold;
+      color: #1873bc;
+  }

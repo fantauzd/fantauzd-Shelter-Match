@@ -1,0 +1,206 @@
+/*==============================
+	The css in top-nav.css was inspired by Harvard's Brand and Style Guide.
+    However the code was orginal and written to use similar methods as
+    described in the Harvard Business School Navigation Styleguide.
+    The guide can be viewed here: 
+    https://www.hbs.edu/marketing/web-development/desktop/navigation.html
+================================ */
+
+
+.adjust{margin-left: -16px;}
+
+
+/*==============================
+	Shelter Match top css 
+================================ */
+
+/*hides text for image replacement */
+span.holdertext {
+	display:none;
+}
+.clear,
+.clearme {
+	clear:both;
+}
+#container #creators span, #container #creators ul li {
+    font-size: 14px;
+}
+#creators ul li {
+    display: inline;
+}
+
+/*==============================
+	Shelter Match header css (logos and links)  
+================================ */
+#header {
+    clear: left;
+    margin: 0 auto;
+    width: 960px;
+}
+#header {
+	margin-bottom:10px;
+	margin-top: 16px; 
+	position: relative;
+}
+#logo {
+	width:400px;
+	float:left;
+	height: 60px;
+	margin-left: 0;
+}
+#logo a img{
+	border: none;
+    width:538px;
+	float:left;
+	height: 125px;
+	margin-left: 0;
+}
+#creators {
+    color: #888888;
+    float: right;
+    margin-top: 30px;
+    font-family: Arial,Verdana, sans-serif;
+    text-align: right;
+    text-transform: uppercase;
+    width: 352px;
+}
+#creators span{
+	float:left; 
+	width: 30px;
+	padding-top: 45px;
+	margin-left: 5px;
+}
+#creators ul {
+	margin-left: 0;
+	padding-top: 30px;
+	float: left;
+	position: absolute;
+	right: 0;
+}
+#creators ul li {
+	display: inline;	
+}
+#creators ul li {
+	border-left: 1.5px solid rgb(146, 146, 146);
+}
+#creators ul li.firstname {
+	border-left: none;
+}
+#creators ul li  {
+        color: #ed097eea;	
+        display: block;
+        float: left;
+        padding: 0 9px 0 9px;
+}
+
+/*==============================
+	Shelter Match navbar css  
+================================ */
+#navbar{
+    clear: left;
+    margin: 0 auto;
+    width: 960px;
+}
+#navbar {
+	
+	margin-top: 38px;
+	padding-top: 2px;
+	
+}
+#navbar ul {
+    border-top:3px solid #ed097eea;
+	padding:2px 0 0 0;
+	margin:0px 0 28px 0;
+	list-style-type:none;
+}
+#navbar ul li {
+	display:inline;
+	margin-top:10px;	
+}
+#navbar ul li a{	
+	padding:0px;
+	margin:0px;
+	display:inline-block;
+	height:20px;
+	width:80px;
+	margin-top:8px;
+	margin-right:37px;
+}
+
+#navbar ul li.last a{margin-right:0; margin-left:-4px;}
+
+
+/*=============================
+	link backgrounds for gif method
+================================ */
+
+#navbar ul li#home-nav a{
+    background: url(/img/alllinks.gif) -5px 0px;
+    width:60px;
+}
+#navbar ul li#breeds-nav a{
+    background: url(/img/alllinks.gif) -60px 0px;
+    width:70px;
+}
+#navbar ul li#shelters-nav a{
+    background: url(/img/alllinks.gif) -135px 0px;
+    width:80px;	
+}
+#navbar ul li#dogs-nav a{
+    background: url(/img/alllinks.gif) -227px 0px;
+    width:46px;
+}	
+#navbar ul li#users-nav a{
+    background: url(/img/alllinks.gif) -282px 0px;
+    width:52px;
+	
+}
+#navbar ul li#matches-nav a{
+    background: url(/img/alllinks.gif) -346px 0px;
+    width:79px;	
+}
+#navbar ul li#adoptions-nav a{
+    background: url(/img/alllinks.gif) -430px 0px;
+    width:92px;	
+}
+#navbar ul li#likes-nav a{
+    background: url(/img/alllinks.gif) -529px 0px;
+    width:58px;	
+}	
+
+/*=============***=================
+link hover states (pushed down 19px) for gif method
+===============***================= */
+
+#navbar ul li#home-nav a:hover, #navbar ul li#home-nav a.on{
+    background: url(/img/alllinks.gif) -5px 19px;
+    width:60px;
+}
+#navbar ul li#breeds-nav a:hover, #navbar ul li#breeds-nav a.on{
+    background: url(/img/alllinks.gif) -60px 19px;
+    width:70px;
+}
+#navbar ul li#shelters-nav a:hover, #navbar ul li#shelters-nav a.on{
+    background: url(/img/alllinks.gif) -135px 19px;
+    width:80px;
+}
+#navbar ul li#dogs-nav a:hover, #navbar ul li#dogs-nav a.on{
+    background: url(/img/alllinks.gif) -227px 19px;
+    width:46px;	
+}
+#navbar ul li#users-nav a:hover, #navbar ul li#users-nav a.on{
+    background: url(/img/alllinks.gif) -282px 19px;
+    width:52px;
+}
+#navbar ul li#matches-nav a:hover, 	#navbar ul li#matches-nav a.on{
+    background: url(/img/alllinks.gif) -346px 19px;
+    width:79px;	
+}
+#navbar ul li#adoptions-nav a:hover, #navbar ul li#adoptions-nav a.on{
+    background: url(/img/alllinks.gif) -430px 19px;
+    width:92px;
+}
+#navbar ul li#likes-nav a:hover, #navbar ul li#likes-nav a.on{
+    background: url(/img/alllinks.gif) -529px 19px;
+    width:58px;	
+}	

@@ -16,11 +16,11 @@ PORT = 23108;
 // Database
 var db = require('./database/db-connector');
 
-// // Handlebars
-// const { engine } = require('express-handlebars');
-// var exphbs = require('express-handlebars');     // Import express-handlebars
-// app.engine('.hbs', engine({extname: ".hbs"}));  // Create an instance of the handlebars engine to process templates
-// app.set('view engine', '.hbs');                 // Tell express to use the handlebars engine whenever it encounters a *.hbs file.
+// Handlebars
+const { engine } = require('express-handlebars');
+var exphbs = require('express-handlebars');     // Import express-handlebars
+app.engine('.hbs', engine({extname: ".hbs"}));  // Create an instance of the handlebars engine to process templates
+app.set('view engine', '.hbs');                 // Tell express to use the handlebars engine whenever it encounters a *.hbs file.
 
 /*
     ROUTES
@@ -29,25 +29,13 @@ var db = require('./database/db-connector');
 // index
 app.get('/index', function(req, res)
     {
-         // SELECT *...
-         db.pool.query('SELECT * FROM Shelters;', function(err, results, fields){
-
-            // Send the results to the browser
-            let base = "<h1>MySQL Results:</h1>"
-            res.send(base + JSON.stringify(results));
-        });
+        res.render('index');
     }
 );
 
 app.get('/', function(req, res)
     {
-         // SELECT *...
-         db.pool.query('SELECT * FROM Shelters;', function(err, results, fields){
-
-            // Send the results to the browser
-            let base = "<h1>MySQL Results:</h1>"
-            res.send(base + JSON.stringify(results));
-         });
+        res.render('index');
     }
 );
 
