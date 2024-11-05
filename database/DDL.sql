@@ -42,25 +42,43 @@ VALUES
     ('Lake Lowell Animal Rescue', 'lakelowellanimal@gmail.com', '912 246 6469', '455 Lowell Street', 'Tampa', '34554', 'FL');
 
 -- -----------------------------------------------------
--- Table 'dogs`
+-- Table `pets`
 -- -----------------------------------------------------
-CREATE OR REPLACE TABLE `Dogs` (
-  `dog_id` INT NOT NULL AUTO_INCREMENT,
+CREATE OR REPLACE TABLE `Pets` (
+  `pet_id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
+  `species` VARCHAR(255) NOT NULL,
+  `breed` VARCHAR(255) NOT NULL,
   `birthdate` DATE NULL,
   `size` VARCHAR(255) NOT NULL,
   `description` VARCHAR(600) NOT NULL,
   -- Using the longblob method to store images in mysql (https://www.codexworld.com/store-retrieve-image-from-database-mysql-php/)
   `image` longblob NOT NULL,
   `shelter_id` INT NOT NULL,
-  INDEX `fk_dogs_Shelter1_idx` (`shelter_id` ASC) VISIBLE,
-  PRIMARY KEY (`dog_id`),
-  CONSTRAINT `fk_dogs_Shelter1`
+  INDEX `fk_pets_Shelter1_idx` (`shelter_id` ASC) VISIBLE,
+  PRIMARY KEY (`pet_id`),
+  CONSTRAINT `fk_pets_Shelter1`
     FOREIGN KEY (`shelter_id`)
     REFERENCES `Shelters` (`shelter_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+-- INSERT INTO Pets (name, species, breed, birthdate, size, description, image, shelter_id)
+-- VALUES
+-- (
+--     'Moose', 
+--     'Dog', 
+--     'Mutt', 
+--     '2016-01-24', 
+--     'Large', 
+--     'Meet Moose, the scruffy mutt with a heart as warm as his cocoa-brown coat! This handsome fellow is a true mix of everything lovable in a dog. \
+--     Moose is a medium-sized dog with a shaggy, thick coat that’s mostly a warm brown color, adding to his unique charm. His soulful, deep-brown eyes shine with intelligence and curiosity, \
+--     and his slightly floppy ears perk up whenever he hears a friendly voice or the jingling of a leash. Moose is the kind of dog who is eager to join you for a walk around the neighborhood \
+--     or a cozy nap on the couch.', 
+--     LOAD_FILE('C:/Users/domin/OneDrive/Pictures/Moose.jpg'), 
+--     1
+-- );
 
 -- -----------------------------------------------------
 -- Table `users`
@@ -88,19 +106,19 @@ CREATE OR REPLACE TABLE `Matches` (
   `match_id` INT NOT NULL AUTO_INCREMENT,
   `date` DATE NOT NULL,
   `user_id` INT NOT NULL,
-  `dog_id` INT NOT NULL,
+  `pet_id` INT NOT NULL,
   `is_active` TINYINT(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`match_id`),
   INDEX `fk_matches_users1_idx` (`user_id` ASC) VISIBLE,
-  INDEX `fk_matches_dogs1_idx` (`dog_id` ASC) VISIBLE,
+  INDEX `fk_matches_pets1_idx` (`pet_id` ASC) VISIBLE,
   CONSTRAINT `fk_matches_users1`
     FOREIGN KEY (`user_id`)
     REFERENCES `Users` (`user_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_matches_dogs1`
-    FOREIGN KEY (`dog_id`)
-    REFERENCES `Dogs` (`dog_id`)
+  CONSTRAINT `fk_matches_pets1`
+    FOREIGN KEY (`pet_id`)
+    REFERENCES `Pets` (`pet_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
