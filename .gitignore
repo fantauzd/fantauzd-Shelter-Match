@@ -134,3 +134,6 @@ dist
 /node_modules
 /database/db-connector.js
 /database/dbConfig.php
+
+# git does not need to copy pet files
+/pets
