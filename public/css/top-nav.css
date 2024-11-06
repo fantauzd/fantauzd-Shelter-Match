@@ -22,7 +22,7 @@ span.holdertext {
 .clearme {
 	clear:both;
 }
-#container #creators span, #container #creators ul li {
+#container #creators span, #container ul li {
     font-size: 14px;
 }
 #creators ul li {
@@ -53,43 +53,7 @@ span.holdertext {
 	height: 125px;
 	margin-left: 0;
 }
-#creators {
-    color: #888888;
-    float: right;
-    margin-top: 30px;
-    font-family: Arial,Verdana, sans-serif;
-    text-align: right;
-    text-transform: uppercase;
-    width: 352px;
-}
-#creators span{
-	float:left; 
-	width: 30px;
-	padding-top: 45px;
-	margin-left: 5px;
-}
-#creators ul {
-	margin-left: 0;
-	padding-top: 30px;
-	float: left;
-	position: absolute;
-	right: 0;
-}
-#creators ul li {
-	display: inline;	
-}
-#creators ul li {
-	border-left: 1.5px solid rgb(146, 146, 146);
-}
-#creators ul li.firstname {
-	border-left: none;
-}
-#creators ul li  {
-        color: #ed097eea;	
-        display: block;
-        float: left;
-        padding: 0 9px 0 9px;
-}
+
 
 /*==============================
 	Shelter Match navbar css  
