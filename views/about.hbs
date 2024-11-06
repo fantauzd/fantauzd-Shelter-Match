@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shelter Match</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: #333;
+            margin: 0;
+            padding: 10px;
+        }
+
+        /* Banner section */
+        .banner {
+            background-image: url('/img/page/banner.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            height: 25vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            position: relative;
+        }
+        .banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* Dark overlay for text readability */
+        }
+        .banner-content {
+            position: relative;
+            z-index: 1;
+            display: block;
+            margin-right: -45%;
+        }
+        .banner h2 {
+            font-size: .8em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: -25px;
+            margin-left: -140px;
+        }
+        .banner h1 {
+            font-size: 3.2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        /* Not banner */
+        .mission {
+            font-size: 1em;
+            margin: 0 auto;
+            margin-top: 30px;
+            max-width: 60%;
+            line-height: 1.6;
+            color: #555;
+        }
+        .find-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #A2BA77;
+            color: #fff;
+            font-size: 1.2em;
+            text-decoration: none;
+            border-radius: 8px;
+            margin: 40px;
+        }
+        .demo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #demo {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner Section -->
+    <div class="banner">
+        <div class="banner-content">
+            <h2>Animals Need</h2>
+            <h1>Your Help!</h1>
+        </div>
+    </div>
+    <!-- Remaining Section -->
+    <p class="mission">
+        Our mission is to help you find the perfect next member of your family. Luckily, we know lots of fun and loving pets looking for a home. Shelter Match works with a variety of shelters to help match shelter animals with loving homes. Use our main page to see pets that can’t wait to meet you. When you find the perfect fit, reach out to the shelter listed on the right side to set up a visit. Select the button below to get started!
+    </p>
+    <p></p>
+    <p class="mission">
+        For our nonprofit and animal shelter partners, please use the Pets section in the top right to add any pets that still need a home and remove any that have been placed.
+    </p>
+
+    <div class="demo-container">
+    <img id='demo' src="/img/page/demo.jpg">
+</div>
+
+    <a href="/index" class="find-button">Find A Pet Now</a>
+
+</body>
+</html>
