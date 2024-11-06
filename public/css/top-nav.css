@@ -99,19 +99,19 @@ span.holdertext {
 ================================ */
 
 #navbar ul li#sheltermatch-nav a{
-    background: url(/img/alllinks.gif) -2px 0px;
+    background: url(/img/page/alllinks.gif) -2px 0px;
     width:160px;
 }
 #navbar ul li#home-nav a{
-    background: url(/img/alllinks.gif) -275px 0px;
+    background: url(/img/page/alllinks.gif) -275px 0px;
     width:70px;
 }
 #navbar ul li#about-nav a{
-    background: url(/img/alllinks.gif) -350px 0px;
+    background: url(/img/page/alllinks.gif) -350px 0px;
     width:100px;	
 }
 #navbar ul li#pets-nav a{
-    background: url(/img/alllinks.gif) -460px 0px;
+    background: url(/img/page/alllinks.gif) -460px 0px;
     width:80px;
 }	
 
@@ -120,18 +120,18 @@ link hover states (pushed down 19px) for gif method
 ===============***================= */
 
 #navbar ul li#sheltermatch-nav a:hover, #navbar ul li#sheltermatch-nav a.on{
-    background: url(/img/alllinks.gif) -2px 25px;
+    background: url(/img/page/alllinks.gif) -2px 25px;
     width:160px;
 }
 #navbar ul li#home-nav a:hover, #navbar ul li#home-nav a.on{
-    background: url(/img/alllinks.gif) -275px 25px;
+    background: url(/img/page/alllinks.gif) -275px 25px;
     width:70px;
 }
 #navbar ul li#about-nav a:hover, #navbar ul li#about-nav a.on{
-    background: url(/img/alllinks.gif) -350px 25px;
+    background: url(/img/page/alllinks.gif) -350px 25px;
     width:100px;
 }
 #navbar ul li#pets-nav a:hover, #navbar ul li#pets-nav a.on{
-    background: url(/img/alllinks.gif) -460px 25px;
+    background: url(/img/page/alllinks.gif) -460px 25px;
     width:80px;	
 }

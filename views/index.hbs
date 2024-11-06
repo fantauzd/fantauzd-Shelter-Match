@@ -14,16 +14,14 @@
         </div>
         <!-- Right Window (Details) -->
         <div class="right-window">
-            <h1>Max, 6</h1>
-            <div class="icon-text"><span class="icon"><img src="/img/magnify.svg"></i></span> Dog - Mutt</div>
-            <div class="icon-text"><span class="icon"><img src="/img/ruler.svg"></i></span> Medium</div>
-            <div class="icon-text"><span class="icon"><img src="/img/where.svg"></i></span> Saving Love Animal Shelter<br>2523 Botatore Way, Austin TX 80392</div>
-            <div class="icon-text"><span class="icon"><img src="/img/phone.svg"></i></span> 523 234 2345</div>
-            <div class="icon-text"><span class="icon"><img src="/img/mail.svg"></i></span> savinglove39@gmail.com</div>
+            <h1>{{data.0.name}}, {{data.0.birth}} </h1>
+            <div class="icon-text"><span class="icon"><img src="/img/page/magnify.svg"></i></span> {{data.0.species}} - {{data.0.breed}}</div>
+            <div class="icon-text"><span class="icon"><img src="/img/page/ruler.svg"></i></span> {{data.0.size}}</div>
+            <div class="icon-text"><span class="icon"><img src="/img/page/where.svg"></i></span> {{data.0.shelter}}<br>{{data.0.street}}, {{data.0.city}} {{data.0.state}} {{data.0.postal}}</div>
+            <div class="icon-text"><span class="icon"><img src="/img/page/phone.svg"></i></span> {{data.0.phone}}</div>
+            <div class="icon-text"><span class="icon"><img src="/img/page/mail.svg"></i></span> {{data.0.email}}</div>
             <p class="description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt fermentum dapibus. 
-                Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                Pellentesque habitant morbi tristique senectus et netus.
+                {{data.0.description}}
             </p>
         </div>
     </div>

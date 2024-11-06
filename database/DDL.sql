@@ -52,8 +52,7 @@ CREATE OR REPLACE TABLE `Pets` (
   `birthdate` DATE NULL,
   `size` VARCHAR(255) NOT NULL,
   `description` VARCHAR(600) NOT NULL,
-  -- Using the longblob method to store images in mysql (https://www.codexworld.com/store-retrieve-image-from-database-mysql-php/)
-  `image` longblob NOT NULL,
+  `filename` VARCHAR(255) NOT NULL,
   `shelter_id` INT NOT NULL,
   INDEX `fk_pets_Shelter1_idx` (`shelter_id` ASC) VISIBLE,
   PRIMARY KEY (`pet_id`),
@@ -64,7 +63,7 @@ CREATE OR REPLACE TABLE `Pets` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
--- INSERT INTO Pets (name, species, breed, birthdate, size, description, image, shelter_id)
+-- INSERT INTO Pets (name, species, breed, birthdate, size, description, filename, shelter_id)
 -- VALUES
 -- (
 --     'Moose', 

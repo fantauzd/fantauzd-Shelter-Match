@@ -29,15 +29,64 @@ app.set('view engine', '.hbs');                 // Tell express to use the handl
 // index
 app.get('/index', function(req, res)
     {
-        res.render('index');
-    }
-);
+        //get information on a specific pet for main page
+        let getPet = `
+        SELECT
+            Pets.name, Pets.species, Pets.breed, Pets.image, 
+            DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(), Pets.birthdate)), '%Y') + 0 AS birth, 
+            Pets.size, Pets.description, Shelters.name AS shelter, 
+            Shelters.email AS email, Shelters.phone AS phone, 
+            Shelters.street_address AS street, Shelters.city AS city, 
+            Shelters.postal_code AS postal, Shelters.state AS state
+        FROM
+            Pets
+        LEFT JOIN
+            Shelters ON Pets.shelter_id = Shelters.shelter_id
+        WHERE
+            Pets.pet_id = 1;
+        `;
 
-app.get('/', function(req, res)
-    {
-        res.render('index');
-    }
-);
+        db.pool.query(getPet, function(error, Pet, fields) {
+            if (error) {
+                console.log(error);
+                res.sendStatus(400);
+                return;
+            }
+            console.log({data:Pet});
+            res.render('index', {data: Pet});
+        })
+    });
+
+// app.get('/', function(req, res)
+//     {
+//         //get information on a specific pet for main page
+//         let getPet = `
+//         SELECT
+//             Pets.name, Pets.species, Pets.breed, Pets.birthdate, 
+//             Pets.size, Pets.description, Shelters.name AS shelter, 
+//             Shelters.email AS email, Shelters.phone AS phone, 
+//             Shelters.street_address AS street, Shelters.city AS city, 
+//             Shelters.postal_code AS postal, Shelters.state AS state
+//         FROM
+//             Pets
+//         LEFT JOIN
+//             Shelters ON Pets.shelter_id = Shelters.shelter_id
+//         WHERE
+//             Pets.pet_id = 1;
+//         `;
+
+//         db.pool.query(getPet, function(error, Pet, fields) {
+//             if (error) {
+//                 console.log(error);
+//                 res.sendStatus(400);
+//                 console.log('HERE1!');
+//                 return;
+//             }
+//             console.log({data: Pet});
+//             console.log('HERE2!');
+//             res.render('index', {data: Pet});
+//         })
+//     });
 
 /*
     LISTENER
