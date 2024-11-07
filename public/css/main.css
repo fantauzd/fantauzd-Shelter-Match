@@ -154,7 +154,7 @@ body {
 }
 
 #leftButton button, #rightButton button {
-    background-color: green; /* Button background color */
+    background-color: rgb(255, 255, 255); /* Button background color */
     border: none; /* Remove border */
     border-radius: 8px; /* Rounded corners */
     width: 50px; /* Smaller width */
