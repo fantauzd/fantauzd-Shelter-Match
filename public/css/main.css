@@ -143,3 +143,34 @@ body {
       font-weight: bold;
       color: #1873bc;
   }
+  /*==============================
+      Home buttons styling
+  ================================ */
+  #buttonContainer {
+    display: flex;
+    justify-content: center; /* Center the buttons horizontally */
+    align-items: center;
+    margin-top: 20px; /* Optional: Adjust spacing from other elements */
+}
+
+#leftButton button, #rightButton button {
+    background-color: green; /* Button background color */
+    border: none; /* Remove border */
+    border-radius: 8px; /* Rounded corners */
+    width: 50px; /* Smaller width */
+    height: 50px; /* Smaller height */
+    padding: 5px; /* Adjust padding to fit icon size */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer; /* Pointer cursor for better UX */
+}
+
+#leftButton, #rightButton {
+    margin: 0 5px; /* Small space between the buttons */
+}
+
+#leftButton img, #rightButton img {
+    width: 100%; /* Make icon fit the button */
+    height: 100%;
+}
