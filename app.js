@@ -22,6 +22,14 @@ var exphbs = require('express-handlebars');     // Import express-handlebars
 app.engine('.hbs', engine({extname: ".hbs"}));  // Create an instance of the handlebars engine to process templates
 app.set('view engine', '.hbs');                 // Tell express to use the handlebars engine whenever it encounters a *.hbs file.
 
+// Image Upload
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
+const mysql = require('mysql2/promise');
+// Temporary folder for file uploads
+const upload = multer({ dest: 'uploads/' }); 
+
 /*
     ROUTES
 */
@@ -77,6 +85,64 @@ app.get('/addPets', function(req, res)
         console.log('Displaying addPets page...');
         res.render('addPets');
     });
+
+// addTypical
+app.get('/addTypical', function(req, res)
+    {
+        console.log('Displaying addTypical page...');
+        res.render('addTypical');
+    });
+
+// add_Pet, handle POST for adding a pet
+app.post('/add_pet', upload.single('image'), async (req, res) => {
+    const { name, species, breed, birthdate, size, description, shelter_id } = req.body;
+    const imageFile = req.file;
+
+    if (!imageFile) {
+        return res.status(400).send('Image file is required.');
+    }
+
+    // Define the destination path for the uploaded image
+    const destPath = path.join(__dirname, 'public/img/pets', imageFile.originalname);
+
+    try {
+        // Move the uploaded image from the temporary folder to the desired directory
+        fs.renameSync(imageFile.path, destPath);
+
+
+        // Insert the pet data into the Pets table
+        const query = `INSERT INTO Pets (name, species, breed, birthdate, size, description, filename, shelter_id) 
+                       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
+        const queryValues = [name, species, breed, birthdate, size, description, imageFile.originalname, shelter_id];
+
+        db.pool.query(query, queryValues, function(error, rows, fields){
+
+            // Check to see if there was an error
+            if (error) {
+    
+                // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+                console.log('Error executing query:', error)
+                res.sendStatus(400);
+            }
+    
+            // If there was no error, we redirect back to our pets page
+            else
+            {
+                res.redirect('/pets');
+            }
+        })
+
+    } catch (error) {
+        console.error('Error adding pet:', error);
+
+        // Remove the uploaded image from the server if an error occurs
+        if (fs.existsSync(destPath)) {
+            fs.unlinkSync(destPath);
+        }
+
+        res.status(500).send('An error occurred while adding the pet.');
+    }
+});
     
 /*
     LISTENER

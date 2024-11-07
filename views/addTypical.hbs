@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a Pet</title>
+    <style>
+        body { font-family: Arial, sans-serif; display: flex; justify-content: center;}
+        .container { background-color: #fbf8dc; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1); width: 400px; }
+        .container h2 { text-align: center; color: #4a4a4a; }
+        label { display: block; margin-top: 10px; font-weight: bold; }
+        input[type="text"], input[type="date"], select, textarea { width: 100%; padding: 8px; margin-top: 5px; border-radius: 5px; border: 1px solid #ccc; }
+        textarea { resize: vertical; height: 80px; }
+        .submit-container { display: flex; justify-content: center; margin-top: 20px; }
+        button { padding: 10px 20px; font-size: 16px; border: none; border-radius: 5px; cursor: pointer; }
+        button.submit-btn { background-color: #4CAF50; color: white; }
+        button.cancel-btn { background-color: #f44336; color: white; margin-left: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Add a Pet</h2>
+    <form id="addPetForm" action="/add_pet" method="POST" enctype="multipart/form-data">
+        <!-- Pet Fields -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="species">Species:</label>
+        <select id="species" name="species" required>
+            <option value="Dog">Dog</option>
+            <option value="Cat">Cat</option>
+            <option value="Rabbit">Rabbit</option>
+            <option value="Bird">Bird</option>
+            <option value="Snake">Snake</option>
+            <option value="Horse">Snake</option>
+        </select>
+
+        <label for="breed">Breed:</label>
+        <input type="text" id="breed" name="breed" required>
+
+        <label for="birthdate">Birthdate:</label>
+        <input type="date" id="birthdate" name="birthdate">
+
+        <label for="size">Size:</label>
+        <select id="size" name="size" required>
+            <option value="Small">Small</option>
+            <option value="Medium">Medium</option>
+            <option value="Large">Large</option>
+        </select>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required></textarea>
+
+        <!-- Shelter Dropdown -->
+        <label for="shelter_id">Shelter:</label>
+        <select id="shelter_id" name="shelter_id" required>
+            <!-- Needs to be refactore to be dynamically populated by server-side code or JavaScript -->
+            <option value="1">West Valley Humane Society - FL</option>
+            <option value="2">Hand and Paw - FL</option>
+            <option value="3">Lake Lowell Animal Rescue - FL</option>
+        </select>
+
+        <!-- Image Upload -->
+        <label for="image">Image:</label>
+        <input type="file" id="image" name="image" accept="image/jpeg, image/png, image/jpg" required>
+
+        <!-- Submit Button -->
+        <div class="submit-container">
+            <button type="button" onclick="confirmSubmit()" class="submit-btn">Add Pet</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    // Confirm submission before sending the form
+    function confirmSubmit() {
+        const petName = document.getElementById("name").value;
+        const shelterSelect = document.getElementById("shelter_id");
+        const shelterName = shelterSelect.options[shelterSelect.selectedIndex].text;
+
+        const confirmation = confirm(`Are you sure you want to add ${petName} to ${shelterName}?`);
+        if (confirmation) {
+            document.getElementById("addPetForm").submit();
+        }
+    }
+</script>
+
+</body>
+</html>
