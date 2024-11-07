@@ -53,7 +53,6 @@ app.get('/index', function(req, res)
                 res.sendStatus(400);
                 return;
             }
-            console.log({ data: Pet });
             res.render('index', { data: Pet, petId: petId }); // Pass petId to the view
         });
     });
@@ -63,6 +62,13 @@ app.get('/about', function(req, res)
     {
         console.log('Displaying about page...');
         res.render('about');
+    });
+
+// pets
+app.get('/pets', function(req, res)
+    {
+        console.log('Displaying about page...');
+        res.render('pets');
     });
 
 /*

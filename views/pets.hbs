@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Options</title>
+    <style>
+        .option-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px; /* Space between the icons */
+            text-align: center;
+        }
+
+        .option-container .option {
+            text-decoration: none;
+            color: black;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px; /* Space between icon and text */
+            margin-top: 40px;
+            position: relative; /* Required for tooltip positioning */
+        }
+
+        .option-container .option img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .add-icon {
+            color: green;
+        }
+
+        /* Hidden tooltip text */
+        .option .tooltip-text {
+            visibility: hidden;
+            width: 150px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 5px;
+            border-radius: 4px;
+
+            /* Positioning */
+            position: absolute;
+            bottom: -40px; /* Adjust as needed */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+
+            /* Optional: Add a fade-in effect */
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        /* Show tooltip text when hovering over the option */
+        .option:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">What would you like to do?</h1>
+
+    <div class="option-container">
+        <!-- Browse Pets Option -->
+        <a href="/index" class="option">
+            <img src="/img/page/magnify.svg" alt="Browse Pets Icon">
+            <span>Browse Pets</span>
+            <span class="tooltip-text">Return Home</span>
+        </a>
+
+        <!-- Add a Pet Option -->
+        <a href="/addPets" class="option">
+            <img src="/img/page/plus.svg" alt="Add Pet Icon" class="add-icon">
+            <span>Add a Pet</span>
+            <span class="tooltip-text">Requires input and Shelter info</span>
+        </a>
+    </div>
+</body>
+</html>
