@@ -30,9 +30,10 @@ app.set('view engine', '.hbs');                 // Tell express to use the handl
 app.get('/index', function(req, res)
     {
         //get information on a specific pet for main page
+        const petId = req.query.pet_id || 1; // Default to pet_id = 1 if no ID is provided
         let getPet = `
         SELECT
-            Pets.name, Pets.species, Pets.breed, Pets.filename, 
+            Pets.pet_id, Pets.name, Pets.species, Pets.breed, Pets.filename, 
             DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(), Pets.birthdate)), '%Y') + 0 AS birth, 
             Pets.size, Pets.description, Shelters.name AS shelter, 
             Shelters.email AS email, Shelters.phone AS phone, 
@@ -43,18 +44,18 @@ app.get('/index', function(req, res)
         LEFT JOIN
             Shelters ON Pets.shelter_id = Shelters.shelter_id
         WHERE
-            Pets.pet_id = 1;
+            Pets.pet_id = ?;
         `;
 
-        db.pool.query(getPet, function(error, Pet, fields) {
+        db.pool.query(getPet, [petId], function(error, Pet, fields) {
             if (error) {
                 console.log(error);
                 res.sendStatus(400);
                 return;
             }
-            console.log({data:Pet});
-            res.render('index', {data: Pet});
-        })
+            console.log({ data: Pet });
+            res.render('index', { data: Pet, petId: petId }); // Pass petId to the view
+        });
     });
 
 // about
