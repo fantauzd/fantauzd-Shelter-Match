@@ -67,10 +67,17 @@ app.get('/about', function(req, res)
 // pets
 app.get('/pets', function(req, res)
     {
-        console.log('Displaying about page...');
+        console.log('Displaying pets page...');
         res.render('pets');
     });
 
+// addPets
+app.get('/addPets', function(req, res)
+    {
+        console.log('Displaying addPets page...');
+        res.render('addPets');
+    });
+    
 /*
     LISTENER
 */
