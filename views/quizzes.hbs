@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pet Options</title>
+    <title>Quiz Options</title>
     <style>
         .option-container {
             display: flex;
@@ -65,29 +65,40 @@
     </style>
 </head>
 <body>
-    <h1 style="text-align: center;">What would you like to do?</h1>
+    <h1 style="text-align: center;">Have a specific pet in mind?</h1>
 
     <div class="option-container">
-        <!-- Species Reccomendation Option -->
-        <a href="/quizzes" class="option">
+        <!-- Dog Quiz Option -->
+        <a href="/dogQuiz" class="option">
             <img src="/img/page/question.svg" alt="Browse Pets Icon">
-            <span>Pet Quiz</span>
-            <span class="tooltip-text">Answer questions to see which pet may be right for you.</span>
+            <span>Dogs</span>
+            <span class="tooltip-text">See which dog breed is best for you.</span>
         </a>   
 
-        <!-- Browse Pets Option -->
-        <a href="/index" class="option">
+        <!-- Cat Quiz Option -->
+        <a href="/catQuiz" class="option">
             <img src="/img/page/magnify.svg" alt="Browse Pets Icon">
-            <span>Browse Pets</span>
-            <span class="tooltip-text">Return Home</span>
+            <span>Cats</span>
+            <span class="tooltip-text">Find a cat breed that fits your needs</span>
         </a>
 
-        <!-- Add a Pet Option -->
-        <a href="/addPets" class="option">
+        <!-- Bird Quiz Option -->
+        <a href="/birdQuiz" class="option">
             <img src="/img/page/plus.svg" alt="Add Pet Icon" class="add-icon">
-            <span>Add a Pet</span>
-            <span class="tooltip-text">Requires input and Shelter info</span>
+            <span>Birds</span>
+            <span class="tooltip-text">Discover what kind of bird suits you.</span>
         </a>
+    </div>
+
+    <h1 style="text-align: center;">Still deciding on the right pet?</h1>
+
+    <div class="option-container">
+        <!-- Dog Quiz Option -->
+        <a href="/dogQuiz" class="option">
+            <img src="/img/page/question.svg" alt="Browse Pets Icon">
+            <span>Species Quiz</span>
+            <span class="tooltip-text">Anwer four questions to see what type of pet might be right for you.</span>
+        </a>   
     </div>
 </body>
 </html>

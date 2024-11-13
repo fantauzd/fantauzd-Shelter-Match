@@ -79,6 +79,13 @@ app.get('/pets', function(req, res)
         res.render('pets');
     });
 
+// quizzes
+app.get('/quizzes', function(req, res)
+    {
+        console.log('Displaying quizzes page...');
+        res.render('quizzes');
+    });
+
 // addPets
 app.get('/addPets', function(req, res)
     {
