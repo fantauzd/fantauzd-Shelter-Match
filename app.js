@@ -9,7 +9,7 @@ var app = express();
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(express.static('public'))
-PORT = 23108;
+PORT = 3000;
 // Popups for client
 //var popup = require('popups');                  // now we can use popup.alert to inform client of issues
 
@@ -28,7 +28,10 @@ const path = require('path');
 const fs = require('fs');
 const mysql = require('mysql2/promise');
 // Temporary folder for file uploads
-const upload = multer({ dest: 'uploads/' }); 
+const upload = multer({ dest: 'uploads/' });
+
+// Microservice Communication Pipe
+const axios = require("axios");                 // Use axious for REST APIs
 
 /*
     ROUTES
@@ -99,6 +102,30 @@ app.get('/addTypical', function(req, res)
         console.log('Displaying addTypical page...');
         res.render('addTypical');
     });
+
+const userCriteria = {
+    age: 30,
+    activityLevel: "high",
+    space: "apartment",
+    allergies: false,
+    experienceWithDogs: true
+};
+
+// Function to get the recommended dog breed or catch error
+async function getDogBreed(criteria) {
+    try {
+        const response = await axios.post("http://localhost:3001/dog-breed", criteria);
+        return response.data.breed;
+    } catch (error) {
+        console.error("Error contacting the microservice:", error);
+        return "Unknown";
+    }
+}
+
+app.get("/dogQuiz", async (req, res) => {
+    const recommendedBreed = await getDogBreed(userCriteria);
+    res.send(`The best dog breed for you is: ${recommendedBreed}`);
+});
 
 // add_Pet, handle POST for adding a pet
 app.post('/add_pet', upload.single('image'), async (req, res) => {
