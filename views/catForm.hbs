@@ -1,3 +1,4 @@
+<!-- views/form.handlebars -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,8 +96,8 @@
 <body>
     <!-- Form Container to center the form without affecting the entire body -->
     <div class="form-container">
-        <form action="/recommend-dog" method="POST">
-            <h1>Find Your Ideal Dog Breed</h1>
+        <form action="/recommend-cat" method="POST">
+            <h1>Find Your Ideal Cat Breed</h1>
 
             <label for="size">Preferred Size (1 = Small, 10 = Large):</label>
             <input type="range" name="size" id="size" min="1" max="10" required>
@@ -104,17 +105,17 @@
             <label for="energyLevel">Energy Level (1 = Low, 10 = High):</label>
             <input type="range" name="energyLevel" id="energyLevel" min="1" max="10" required>
 
-            <label for="goodWithKids">Good with Kids (1 = Not at All, 10 = Excellent):</label>
-            <input type="range" name="goodWithKids" id="goodWithKids" min="1" max="10" required>
+            <label for="sociability">Sociability (1 = Low, 10 = Very Social):</label>
+            <input type="range" name="sociability" id="sociability" min="1" max="10" required>
 
-            <label for="coatType">Coat Type (1 = Short, 10 = Long):</label>
-            <input type="range" name="coatType" id="coatType" min="1" max="10" required>
+            <label for="coatLength">Coat Length (1 = Short, 10 = Long):</label>
+            <input type="range" name="coatLength" id="coatLength" min="1" max="10" required>
 
             <label for="livingSpace">Living Space (1 = Apartment, 10 = Large House):</label>
             <input type="range" name="livingSpace" id="livingSpace" min="1" max="10" required>
 
-            <label for="experienceWithDogs">Experience with Dogs (1 = Beginner, 10 = Expert):</label>
-            <input type="range" name="experienceWithDogs" id="experienceWithDogs" min="1" max="10" required>
+            <label for="experienceWithCats">Experience with Cats (1 = Beginner, 10 = Expert):</label>
+            <input type="range" name="experienceWithCats" id="experienceWithCats" min="1" max="10" required>
 
             <button type="submit">Get Recommendation</button>
         </form>

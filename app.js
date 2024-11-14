@@ -114,18 +114,45 @@ app.get('/dogForm', (req, res) => {
 // Route to handle form submission and fetch recommended breed
 app.post('/recommend-dog', async (req, res) => {
     const userCriteria = {
-        size: req.body.size,
-        energyLevel: req.body.energyLevel,
-        goodWithKids: req.body.goodWithKids === 'yes', // Convert checkbox to boolean
-        coatType: req.body.coatType,
-        livingSpace: req.body.livingSpace,
-        experienceWithDogs: req.body.experienceWithDogs
+        size: parseInt(req.body.size),
+        energyLevel: parseInt(req.body.energyLevel),
+        goodWithKids: parseInt(req.body.goodWithKids),
+        coatType: parseInt(req.body.coatType),
+        livingSpace: parseInt(req.body.livingSpace),
+        experienceWithDogs: parseInt(req.body.experienceWithDogs)
     };
 
     try {
         const response = await axios.post('http://localhost:23109/dog-breed', userCriteria);
         const recommendedBreed = response.data.breed;
         res.render('dogResult', { breed: recommendedBreed });
+    } catch (error) {
+        console.error('Error fetching recommended breed:', error.message);
+        res.render('dogResult', { breed: 'Unable to fetch recommendation' });
+    }
+});
+
+// Route to fetch and display the recommended dog breed
+app.get('/catForm', (req, res) => {
+    console.log('Displaying Cat Form ...');
+    res.render('catForm'); // Render the form page
+});
+
+// Route to handle form submission and fetch recommended breed
+app.post('/recommend-cat', async (req, res) => {
+    const userCriteria = {
+        size: parseInt(req.body.size),
+        energyLevel: parseInt(req.body.energyLevel),
+        goodWithKids: parseInt(req.body.sociability),
+        coatType: parseInt(req.body.coatLength),
+        livingSpace: parseInt(req.body.livingSpace),
+        experienceWithDogs: parseInt(req.body.experienceWithCogs)
+    };
+
+    try {
+        const response = await axios.post('http://localhost:23110/cat-breed', userCriteria);
+        const recommendedBreed = response.data.breed;
+        res.render('catResult', { breed: recommendedBreed });
     } catch (error) {
         console.error('Error fetching recommended breed:', error.message);
         res.render('dogResult', { breed: 'Unable to fetch recommendation' });
