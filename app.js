@@ -5,7 +5,7 @@
 
 // Express
 const express = require('express');
-var app = express();
+const app = express();
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(express.static('public'))
@@ -32,6 +32,7 @@ const upload = multer({ dest: 'uploads/' });
 
 // Microservice Communication Pipe
 const axios = require('axios');                 // Use axious for REST APIs
+app.set('views', path.join(__dirname, 'views'));
 
 /*
     ROUTES
@@ -116,13 +117,14 @@ const userCriteria = {
 app.get('/dog', async (req, res) => {
     try {
         // Send the criteria to the microservice
-        const response = await axios.post('http://localhost:23109/dog-breed', userCriteria);
+        const response = await axios.post('http://localhost:3000/dog-breed', userCriteria);
         const recommendedBreed = response.data.breed;
+        console.log(recommendedBreed);
 
         // Render the page with the recommended breed
         res.render('dog', { breed: recommendedBreed });
     } catch (error) {
-        console.error('Error fetching recommended breed:', error.message);
+        console.error('Error fetching recommended breed:', error);
         res.render('dog', { breed: 'Unable to fetch recommendation' });
     }
 });
