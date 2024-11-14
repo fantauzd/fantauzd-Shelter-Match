@@ -113,6 +113,7 @@ app.get('/dogForm', (req, res) => {
 
 // Route to handle form submission and fetch recommended breed
 app.post('/recommend-dog', async (req, res) => {
+    console.log('Inititating Dog Recommendation ...')
     const userCriteria = {
         size: parseInt(req.body.size),
         energyLevel: parseInt(req.body.energyLevel),
@@ -140,13 +141,14 @@ app.get('/catForm', (req, res) => {
 
 // Route to handle form submission and fetch recommended breed
 app.post('/recommend-cat', async (req, res) => {
+    console.log('Inititating Cat Recommendation ...')
     const userCriteria = {
         size: parseInt(req.body.size),
         energyLevel: parseInt(req.body.energyLevel),
-        goodWithKids: parseInt(req.body.sociability),
-        coatType: parseInt(req.body.coatLength),
+        sociability: parseInt(req.body.sociability),
+        coatLength: parseInt(req.body.coatLength),
         livingSpace: parseInt(req.body.livingSpace),
-        experienceWithDogs: parseInt(req.body.experienceWithCogs)
+        experienceWithCats: parseInt(req.body.experienceWithCats)
     };
 
     try {
@@ -155,7 +157,7 @@ app.post('/recommend-cat', async (req, res) => {
         res.render('catResult', { breed: recommendedBreed });
     } catch (error) {
         console.error('Error fetching recommended breed:', error.message);
-        res.render('dogResult', { breed: 'Unable to fetch recommendation' });
+        res.render('catResult', { breed: 'Unable to fetch recommendation' });
     }
 });
 
