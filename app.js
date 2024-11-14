@@ -4,12 +4,12 @@
 //test comment
 
 // Express
-var express = require('express');
+const express = require('express');
 var app = express();
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(express.static('public'))
-PORT = 3000;
+PORT = 23108;
 // Popups for client
 //var popup = require('popups');                  // now we can use popup.alert to inform client of issues
 
@@ -31,7 +31,7 @@ const mysql = require('mysql2/promise');
 const upload = multer({ dest: 'uploads/' });
 
 // Microservice Communication Pipe
-const axios = require("axios");                 // Use axious for REST APIs
+const axios = require('axios');                 // Use axious for REST APIs
 
 /*
     ROUTES
@@ -104,27 +104,27 @@ app.get('/addTypical', function(req, res)
     });
 
 const userCriteria = {
-    age: 30,
-    activityLevel: "high",
-    space: "apartment",
-    allergies: false,
-    experienceWithDogs: true
+    size: 'medium',
+    energyLevel: 'high',
+    goodWithKids: true,
+    coatType: 'short',
+    livingSpace: 'apartment',
+    experienceWithDogs: 'beginner'
 };
 
-// Function to get the recommended dog breed or catch error
-async function getDogBreed(criteria) {
+// Route to fetch and display the recommended dog breed
+app.get('/dog', async (req, res) => {
     try {
-        const response = await axios.post("http://localhost:3001/dog-breed", criteria);
-        return response.data.breed;
-    } catch (error) {
-        console.error("Error contacting the microservice:", error);
-        return "Unknown";
-    }
-}
+        // Send the criteria to the microservice
+        const response = await axios.post('http://localhost:23109/dog-breed', userCriteria);
+        const recommendedBreed = response.data.breed;
 
-app.get("/dogQuiz", async (req, res) => {
-    const recommendedBreed = await getDogBreed(userCriteria);
-    res.send(`The best dog breed for you is: ${recommendedBreed}`);
+        // Render the page with the recommended breed
+        res.render('dog', { breed: recommendedBreed });
+    } catch (error) {
+        console.error('Error fetching recommended breed:', error.message);
+        res.render('dog', { breed: 'Unable to fetch recommendation' });
+    }
 });
 
 // add_Pet, handle POST for adding a pet
