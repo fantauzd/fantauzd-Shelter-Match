@@ -117,7 +117,7 @@ const userCriteria = {
 app.get('/dog', async (req, res) => {
     try {
         // Send the criteria to the microservice
-        const response = await axios.post('http://localhost:3000/dog-breed', userCriteria);
+        const response = await axios.post('http://localhost:23109/dog-breed', userCriteria);
         const recommendedBreed = response.data.breed;
         console.log(recommendedBreed);
 
