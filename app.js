@@ -133,13 +133,13 @@ app.post('/recommend-dog', async (req, res) => {
     }
 });
 
-// Route to fetch and display the recommended dog breed
+// Route to fetch and display the recommended cat breed
 app.get('/catForm', (req, res) => {
     console.log('Displaying Cat Form ...');
     res.render('catForm'); // Render the form page
 });
 
-// Route to handle form submission and fetch recommended breed
+// Route to handle form submission and fetch recommended cat breed
 app.post('/recommend-cat', async (req, res) => {
     console.log('Inititating Cat Recommendation ...')
     const userCriteria = {
@@ -158,6 +158,34 @@ app.post('/recommend-cat', async (req, res) => {
     } catch (error) {
         console.error('Error fetching recommended breed:', error.message);
         res.render('catResult', { breed: 'Unable to fetch recommendation' });
+    }
+});
+
+// Route to fetch and display the recommended bird type
+app.get('/birdForm', (req, res) => {
+    console.log('Displaying Bird Form ...');
+    res.render('birdForm'); // Render the form page
+});
+
+// Route to handle form submission and fetch recommended breed
+app.post('/recommend-bird', async (req, res) => {
+    console.log('Inititating Bird Recommendation ...')
+    const userCriteria = {
+        size: parseInt(req.body.size),
+        energyLevel: parseInt(req.body.energyLevel),
+        sociability: parseInt(req.body.sociability),
+        noiseLevel: parseInt(req.body.noiseLevel),
+        livingSpace: parseInt(req.body.livingSpace),
+        experienceWithBirds: parseInt(req.body.experienceWithBirds)
+    };
+
+    try {
+        const response = await axios.post('http://localhost:23111/bird-breed', userCriteria);
+        const recommendedBreed = response.data.breed;
+        res.render('birdResult', { breed: recommendedBreed });
+    } catch (error) {
+        console.error('Error fetching recommended bird:', error.message);
+        res.render('birdResult', { breed: 'Unable to fetch recommendation' });
     }
 });
 
