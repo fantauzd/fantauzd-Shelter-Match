@@ -104,28 +104,31 @@ app.get('/addTypical', function(req, res)
         res.render('addTypical');
     });
 
-const userCriteria = {
-    size: 'medium',
-    energyLevel: 'high',
-    goodWithKids: true,
-    coatType: 'short',
-    livingSpace: 'apartment',
-    experienceWithDogs: 'beginner'
-};
 
 // Route to fetch and display the recommended dog breed
-app.get('/dog', async (req, res) => {
+app.get('/dogForm', (req, res) => {
+    console.log('Displaying Dog Form ...');
+    res.render('dogForm'); // Render the form page
+});
+
+// Route to handle form submission and fetch recommended breed
+app.post('/recommend-dog', async (req, res) => {
+    const userCriteria = {
+        size: req.body.size,
+        energyLevel: req.body.energyLevel,
+        goodWithKids: req.body.goodWithKids === 'yes', // Convert checkbox to boolean
+        coatType: req.body.coatType,
+        livingSpace: req.body.livingSpace,
+        experienceWithDogs: req.body.experienceWithDogs
+    };
+
     try {
-        // Send the criteria to the microservice
         const response = await axios.post('http://localhost:23109/dog-breed', userCriteria);
         const recommendedBreed = response.data.breed;
-        console.log(recommendedBreed);
-
-        // Render the page with the recommended breed
-        res.render('dog', { breed: recommendedBreed });
+        res.render('dogResult', { breed: recommendedBreed });
     } catch (error) {
-        console.error('Error fetching recommended breed:', error);
-        res.render('dog', { breed: 'Unable to fetch recommendation' });
+        console.error('Error fetching recommended breed:', error.message);
+        res.render('dogResult', { breed: 'Unable to fetch recommendation' });
     }
 });
 
