@@ -167,7 +167,7 @@ app.get('/birdForm', (req, res) => {
     res.render('birdForm'); // Render the form page
 });
 
-// Route to handle form submission and fetch recommended breed
+// Route to handle form submission and fetch bird type
 app.post('/recommend-bird', async (req, res) => {
     console.log('Inititating Bird Recommendation ...')
     const userCriteria = {
@@ -186,6 +186,32 @@ app.post('/recommend-bird', async (req, res) => {
     } catch (error) {
         console.error('Error fetching recommended bird:', error.message);
         res.render('birdResult', { breed: 'Unable to fetch recommendation' });
+    }
+});
+
+// Route to fetch and display the species Quiz
+app.get('/speciesQuiz', (req, res) => {
+    console.log('Displaying Species Quiz ...');
+    res.render('speciesQuiz'); // Render the form page
+});
+
+// Route to handle form submission and fetch bird type
+app.post('/recommend-species', async (req, res) => {
+    console.log('Inititating Species Recommendation ...')
+    const inputs = {
+        size: parseInt(req.body.size),
+        space: parseInt(req.body.livingSpace),
+        interaction: parseInt(req.body.interactionLevel),
+        cost: parseInt(req.body.cost),
+    };
+
+    try {
+        const response = await axios.post('http://localhost:23112/pet-type-recommendation-multiple', inputs);
+        const recommendedSpecies = response.body.Answer;
+        res.render('speciesResult', { species: recommendedSpecies });
+    } catch (error) {
+        console.error('Error fetching recommended species:', error.message);
+        res.render('speciesResult', { species: 'Unable to fetch recommendation' });
     }
 });
 
