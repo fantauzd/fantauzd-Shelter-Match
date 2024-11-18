@@ -206,8 +206,8 @@ app.post('/recommend-species', async (req, res) => {
     };
 
     try {
-        const response = await axios.post('http://localhost:23112/pet-type-recommendation-multiple', inputs);
-        const recommendedSpecies = response.body.Answer;
+        const response = await axios.post('http://localhost:23112/pet-type-recommendation', inputs);
+        const recommendedSpecies = response.data.answer;
         res.render('speciesResult', { species: recommendedSpecies });
     } catch (error) {
         console.error('Error fetching recommended species:', error.message);
