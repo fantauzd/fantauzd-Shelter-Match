@@ -122,6 +122,7 @@ app.post('/recommend-dog', async (req, res) => {
         livingSpace: parseInt(req.body.livingSpace),
         experienceWithDogs: parseInt(req.body.experienceWithDogs)
     };
+    console.log(userCriteria);
 
     try {
         const response = await axios.post('http://localhost:23109/dog-breed', userCriteria);
@@ -150,6 +151,7 @@ app.post('/recommend-cat', async (req, res) => {
         livingSpace: parseInt(req.body.livingSpace),
         experienceWithCats: parseInt(req.body.experienceWithCats)
     };
+    console.log(userCriteria);
 
     try {
         const response = await axios.post('http://localhost:23110/cat-breed', userCriteria);
@@ -178,6 +180,7 @@ app.post('/recommend-bird', async (req, res) => {
         livingSpace: parseInt(req.body.livingSpace),
         experienceWithBirds: parseInt(req.body.experienceWithBirds)
     };
+    console.log(userCriteria);
 
     try {
         const response = await axios.post('http://localhost:23111/bird-breed', userCriteria);
